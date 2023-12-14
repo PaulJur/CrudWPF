@@ -8,4 +8,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="CRUDEntityFramework">
+      <HintPath>..\..\CRUDEntityFramework\CRUDEntityFramework\bin\Debug\net8.0\CRUDEntityFramework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
