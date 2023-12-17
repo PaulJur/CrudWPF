@@ -16,9 +16,9 @@
         <Label Content="Age" HorizontalAlignment="Left" Margin="39,82,0,0" VerticalAlignment="Top"/>
         <Label Content="Gender" HorizontalAlignment="Left" Margin="30,113,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.642,3.502"/>
 
-        <TextBox x:Name="name_txt" HorizontalAlignment="Left" Margin="95,55,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Background="{x:Null}"/>
-        <TextBox x:Name="age_txt" HorizontalAlignment="Left" Margin="95,90,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.539,3.092"/>
-        <TextBox x:Name="gender_txt" HorizontalAlignment="Left" Margin="95,121,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="name_txt"  HorizontalAlignment="Left" Margin="95,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="{x:Null}"/>
+        <TextBox x:Name="age_txt"  HorizontalAlignment="Left" Margin="95,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.539,3.092"/>
+        <TextBox x:Name="gender_txt" HorizontalAlignment="Left" Margin="95,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
         <DataGrid x:Name="datagrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="19,169,19,10" Grid.ColumnSpan="2" SelectionChanged="DataGrid_SelectionChanged" AutoGenerateColumns="True"/>
 

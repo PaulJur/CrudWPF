@@ -9,8 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="CRUDEntityFramework">
       <HintPath>..\..\CRUDEntityFramework\CRUDEntityFramework\bin\Debug\net8.0\CRUDEntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="CRUDFunctionsWPF">
+      <HintPath>..\CRUDFunctionsWPF\bin\Debug\net8.0\CRUDFunctionsWPF.dll</HintPath>
     </Reference>
   </ItemGroup>
 
