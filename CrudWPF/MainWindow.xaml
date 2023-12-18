@@ -12,22 +12,35 @@
             <ColumnDefinition Width="49*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Name" HorizontalAlignment="Left" Margin="34,51,0,0" VerticalAlignment="Top"/>
-        <Label Content="Age" HorizontalAlignment="Left" Margin="39,82,0,0" VerticalAlignment="Top"/>
-        <Label Content="Gender" HorizontalAlignment="Left" Margin="30,113,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.642,3.502"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="34,20,0,0" VerticalAlignment="Top"/>
+        <Label Content="Age" HorizontalAlignment="Left" Margin="34,51,0,0" VerticalAlignment="Top"/>
+        <Label Content="Gender" HorizontalAlignment="Left" Margin="30,82,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.642,3.502"/>
+        <Label Content="ID" HorizontalAlignment="Left" Margin="39,124,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.642,3.502"/>
 
-        <TextBox x:Name="name_txt"  HorizontalAlignment="Left" Margin="95,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="{x:Null}"/>
-        <TextBox x:Name="age_txt"  HorizontalAlignment="Left" Margin="95,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.539,3.092"/>
-        <TextBox x:Name="gender_txt" HorizontalAlignment="Left" Margin="95,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
-        <DataGrid x:Name="datagrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="19,169,19,10" Grid.ColumnSpan="2" SelectionChanged="DataGrid_SelectionChanged" AutoGenerateColumns="True"/>
+        <TextBox x:Name="name_txt"  PreviewTextInput="InputCheck_RegexLetters" HorizontalAlignment="Left" Margin="95,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="{x:Null}"/>
+        <TextBox x:Name="age_txt"   PreviewTextInput="InputCheck_RegexNumbers" HorizontalAlignment="Left" Margin="95,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.539,3.092"/>
+        <TextBox x:Name="gender_txt" PreviewTextInput="InputCheck_RegexLetters" HorizontalAlignment="Left" Margin="95,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="id_txt" PreviewTextInput="InputCheck_RegexNumbers" HorizontalAlignment="Left" Margin="95,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
-        <Button Content="Insert Record" HorizontalAlignment="Left" Margin="267,55,0,0" VerticalAlignment="Top" Click="InsertButton_Click" Height="40" Width="98" FontFamily="Arial" ClipToBounds="True" FontWeight="Bold" RenderTransformOrigin="1.362,-0.281"/>
-        <Button Content="Update Record" HorizontalAlignment="Left" Margin="384,55,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="UpdateButton_Click" Height="40" Width="98" FontFamily="Arial" FontWeight="Bold" />
-        <Button Content="Delete Record" HorizontalAlignment="Left" Margin="267,106,0,0" VerticalAlignment="Top" Click="DeleteButton_Click" Height="40" Width="98" FontFamily="Arial" FontWeight="Bold"/>
-        <Button Content="Read Records" HorizontalAlignment="Left" Margin="384,106,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.962,0.508" Grid.ColumnSpan="2" Click="ReadButton_Click" Height="40" Width="98" FontFamily="Arial" FontWeight="Bold" />
+        <DataGrid x:Name="datagrid" Margin="19,169,19,10" Grid.ColumnSpan="2" AutoGenerateColumns="False" ColumnWidth="*" ItemsSource="{Binding Person}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
+                <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <Button Content="Insert Record" HorizontalAlignment="Left" Margin="267,44,0,0" VerticalAlignment="Top" Click="InsertButton_Click" Height="40" Width="98" FontFamily="Arial" ClipToBounds="True" FontWeight="Bold" RenderTransformOrigin="1.362,-0.281"/>
+        <Button Content="Update Record" HorizontalAlignment="Left" Margin="384,44,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="UpdateButton_Click" Height="40" Width="98" FontFamily="Arial" FontWeight="Bold" />
+        <Button Content="Delete Record" HorizontalAlignment="Left" Margin="267,95,0,0" VerticalAlignment="Top" Click="DeleteButton_Click" Height="40" Width="98" FontFamily="Arial" FontWeight="Bold"/>
+        <Button Content="Read Records" HorizontalAlignment="Left" Margin="384,95,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.962,0.508" Grid.ColumnSpan="2" Click="ReadButton_Click" Height="40" Width="98" FontFamily="Arial" FontWeight="Bold" />
+
+
 
 
 
     </Grid>
+
 </Window>

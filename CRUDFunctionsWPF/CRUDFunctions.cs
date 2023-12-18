@@ -36,9 +36,30 @@ namespace CRUDFunctionsWPF
 
             }
 
+        }
+
+        //Deleting person data based on ID
+        public bool Delete(int id) 
+        {
+
+            using (var context = new CRUDContext(_connectionString))
+            {
+                var personID = context.Person.Find(id);
+
+                if (personID != null)
+                {
+                    context.Person.Remove(personID);
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            return false;
+
 
 
         }
+
+
 
 
 
