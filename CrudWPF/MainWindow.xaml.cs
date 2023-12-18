@@ -43,20 +43,24 @@ namespace CrudWPF
             _datagrid = datagrid;
         }
 
-
+        //Button reponsible for deleting record based on ID.
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            //Checks if the provided ID can be parsed into an int.
             if (int.TryParse(id_txt.Text, out int id))
             {
+                //If parsed, delete the current record based on id.
                 if (_crudFunctions.Delete(id))
                 {
                     MessageBox.Show("Record deleted successfully.", "Successful", MessageBoxButton.OK);
                 }
+                //Otherwise throw message box error if record is not found.
                 else
                 {
                     MessageBox.Show("No record found with the provided ID.", "Record not found", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
+            //If an invalid ID(not an int) is provided, throw an error.
             else
             {
                 MessageBox.Show("Please enter a valid ID.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -86,6 +90,7 @@ namespace CrudWPF
 
         }
 
+        //Loads person data into the datagrid.
         private void ReadButton_Click(object sender, RoutedEventArgs e)
         {
             LoadDatagrid();
@@ -95,9 +100,11 @@ namespace CrudWPF
         {
 
         }
-
+        //Regex for making sure the input field is only letters.
         private void InputCheck_RegexLetters(object sender, TextCompositionEventArgs e)
         {
+            //Checks every letter that is written at the index(0) if it's not a number or a control character
+            //Otherwise throw messagebox error.
             if (!char.IsLetter(e.Text, 0) && !char.IsControl(e.Text, 0))
             {
                 e.Handled = true;
@@ -106,8 +113,11 @@ namespace CrudWPF
 
         }
 
+        //Regex for making sure the input field is only numbers.
         private void InputCheck_RegexNumbers(object sender, TextCompositionEventArgs e)
         {
+            //Checks every letter that is written at the index(0) if it's not a letter or a control character
+            //Otherwise throw messagebox error.
             if (!char.IsDigit(e.Text, 0) && !char.IsControl(e.Text, 0))
             {
                 e.Handled = true;
