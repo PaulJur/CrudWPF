@@ -11,6 +11,7 @@ using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using CRUDFunctionsWPF;
+using System.Collections.ObjectModel;
 
 namespace CrudWPF
 {
@@ -26,6 +27,7 @@ namespace CrudWPF
         private readonly CRUDContext _context;
 
         public static DataGrid _datagrid;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -34,13 +36,18 @@ namespace CrudWPF
 
             _context = new CRUDContext(_connectionString);
 
+            LoadDatagrid();
+
         }
 
         private void LoadDatagrid()//Loads Person data into the grid
         {
             //Sets the Source for datagrid.
+            datagrid.ItemsSource = null;
             datagrid.ItemsSource = _context.Person.ToList();
             _datagrid = datagrid;
+
+
         }
 
         //Button reponsible for deleting record based on ID.
@@ -53,17 +60,20 @@ namespace CrudWPF
                 if (_crudFunctions.Delete(id))
                 {
                     MessageBox.Show("Record deleted successfully.", "Successful", MessageBoxButton.OK);
+                    ClearTextBox();
                 }
                 //Otherwise throw message box error if record is not found.
                 else
                 {
                     MessageBox.Show("No record found with the provided ID.", "Record not found", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    ClearTextBox();
                 }
             }
             //If an invalid ID(not an int) is provided, throw an error.
             else
             {
                 MessageBox.Show("Please enter a valid ID.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ClearTextBox();
             }
         }
 
@@ -87,6 +97,8 @@ namespace CrudWPF
             // Insert Person data into the database based on provided input.
             _crudFunctions.Insert(name, age, gender);
             MessageBox.Show("Record inserted successfully!", "Inserted", MessageBoxButton.OK);
+            ClearTextBox();
+            
 
         }
 
@@ -98,8 +110,33 @@ namespace CrudWPF
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
+            //Textbox text equals to person variables, regex already set so no need for filtering.
+            string name = name_txt.Text;
+            string gender = gender_txt.Text;
+
+            int age;
+            int id;
+            
+
+
+            // Check if age text is not empty and can be parsed to integer
+            bool isAgeValid = int.TryParse(age_txt.Text, out age);
+            bool isIdValid = int.TryParse(id_txt.Text, out id);
+
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(gender) || !isAgeValid || !isIdValid)
+            {
+                MessageBox.Show("Please fill all the fields correctly.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return; // Stop further execution
+            }
+
+            _crudFunctions.Update(id, name, age, gender);
+            MessageBox.Show("Record updated successfully!", "Updated", MessageBoxButton.OK);
+            LoadDatagrid();
+            ClearTextBox();
 
         }
+
+
         //Regex for making sure the input field is only letters.
         private void InputCheck_RegexLetters(object sender, TextCompositionEventArgs e)
         {
@@ -124,5 +161,15 @@ namespace CrudWPF
                 MessageBox.Show("Only numbers are allowed.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void ClearTextBox()
+        {
+            name_txt.Text = null;
+            age_txt.Text = null;
+            gender_txt.Text = null;
+            id_txt.Text = null;
+        }
+
+
     }
 }

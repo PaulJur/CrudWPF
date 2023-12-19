@@ -23,7 +23,7 @@
         <TextBox x:Name="gender_txt" PreviewTextInput="InputCheck_RegexLetters" HorizontalAlignment="Left" Margin="95,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="id_txt" PreviewTextInput="InputCheck_RegexNumbers" HorizontalAlignment="Left" Margin="95,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
-        <DataGrid x:Name="datagrid" Margin="19,169,19,10" Grid.ColumnSpan="2" AutoGenerateColumns="False" ColumnWidth="*" ItemsSource="{Binding Person}">
+        <DataGrid x:Name="datagrid" Margin="19,169,19,10" Grid.ColumnSpan="2" AutoGenerateColumns="False" ColumnWidth="*" ItemsSource="{Binding Person}" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>

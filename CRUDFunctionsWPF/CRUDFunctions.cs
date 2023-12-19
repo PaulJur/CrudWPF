@@ -59,7 +59,28 @@ namespace CRUDFunctionsWPF
 
         }
 
+        public void Update(int id, string name, int age, string gender)
+        {
 
+            using (var context = new CRUDContext(_connectionString))
+            {
+                var personID = context.Person.Find(id);
+
+                if (personID != null)
+                {
+                    
+                    personID.Name = name;
+                    personID.Age = age;
+                    personID.Gender = gender;
+
+                    context.Update(personID);
+                    context.SaveChanges();
+                    
+                }
+
+            }
+
+        }
 
 
 
