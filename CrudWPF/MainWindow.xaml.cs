@@ -194,6 +194,17 @@ namespace CrudWPF
                 LoadDatagrid();
             }
         }
-     
+
+        //Double clicked cells in the datagrid will now populate all the textboxes.
+        private void datagrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (datagrid.SelectedItem is Person selectedPerson)
+            {
+                id_txt.Text = selectedPerson.Id.ToString();
+                name_txt.Text= selectedPerson.Name.ToString();
+                gender_txt.Text = selectedPerson.Gender.ToString();
+                age_txt.Text = selectedPerson.Age.ToString();
+            }
+        }
     }
 }

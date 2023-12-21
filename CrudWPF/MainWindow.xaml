@@ -29,7 +29,7 @@
         <TextBox x:Name="id_txt" PreviewTextInput="InputCheck_RegexNumbers" HorizontalAlignment="Left" Margin="95,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="search_txt" PreviewTextInput="InputCheck_RegexLetters" HorizontalAlignment="Left" Margin="19,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="search_txt_TextChanged" RenderTransformOrigin="0.453,0.478"/>
 
-        <DataGrid x:Name="datagrid" Margin="19,169,19,10" Grid.ColumnSpan="4" AutoGenerateColumns="False" ColumnWidth="*" ItemsSource="{Binding Person}" Background="White" Foreground="Black" FontFamily="Arial" IsSynchronizedWithCurrentItem="True" GridLinesVisibility="Horizontal" IsReadOnly="True">
+        <DataGrid x:Name="datagrid" Margin="19,169,19,10" Grid.ColumnSpan="4" AutoGenerateColumns="False" ColumnWidth="*" ItemsSource="{Binding Person}" Background="White" Foreground="Black" FontFamily="Arial" IsSynchronizedWithCurrentItem="True" GridLinesVisibility="Horizontal" IsReadOnly="True" MouseDoubleClick="datagrid_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
