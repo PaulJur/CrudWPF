@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using CRUDFunctionsWPF;
 using System.Collections.ObjectModel;
+using System.Data;
 
 namespace CrudWPF
 {
@@ -38,6 +39,8 @@ namespace CrudWPF
 
             LoadDatagrid();
 
+            search_txt.TextChanged += search_txt_TextChanged;
+
         }
 
         private void LoadDatagrid()//Loads Person data into the grid
@@ -47,6 +50,7 @@ namespace CrudWPF
             datagrid.ItemsSource = _context.Person.ToList();
             _datagrid = datagrid;
 
+            
 
         }
 
@@ -162,6 +166,7 @@ namespace CrudWPF
             }
         }
 
+        //Clear the textbox texts
         private void ClearTextBox()
         {
             name_txt.Text = null;
@@ -170,6 +175,25 @@ namespace CrudWPF
             id_txt.Text = null;
         }
 
+        private void search_txt_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
+            //Gets the text from inputted text in the textbox.
+            string searchText = search_txt.Text.Trim();
+
+            //Filter data based on the search text.
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                //LAMBDA experssion to filter out based on name and puts it into a list which then updates the datagrid with the list.
+                var filteredData = _context.Person.Where(p => p.Name.Contains(searchText)).ToList();
+                _datagrid.ItemsSource = filteredData;
+            }
+            else
+            {
+                // If the search text is empty, reload the original data
+                LoadDatagrid();
+            }
+        }
+     
     }
 }

@@ -7,18 +7,8 @@
         mc:Ignorable="d"
         Title="CRUDOperations" Height="400" Width="550" WindowStartupLocation="CenterScreen" Background="#34495E" MinHeight="400" MinWidth="550" >
 
-    <Window.Resources>
-        <Style TargetType="Button" x:Key="RoundButton">
-            <Style.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5" />
-                </Style>
-            </Style.Resources>
-        </Style>
-    </Window.Resources>
-
     <Grid Margin="0,0,10,0">
-        
+
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="118*"/>
@@ -37,8 +27,9 @@
         <TextBox x:Name="age_txt"   PreviewTextInput="InputCheck_RegexNumbers" HorizontalAlignment="Left" Margin="95,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.539,3.092"/>
         <TextBox x:Name="gender_txt" PreviewTextInput="InputCheck_RegexLetters" HorizontalAlignment="Left" Margin="95,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="id_txt" PreviewTextInput="InputCheck_RegexNumbers" HorizontalAlignment="Left" Margin="95,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="search_txt" PreviewTextInput="InputCheck_RegexLetters" HorizontalAlignment="Left" Margin="19,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="search_txt_TextChanged" RenderTransformOrigin="0.453,0.478"/>
 
-        <DataGrid x:Name="datagrid" Margin="19,169,19,10" Grid.ColumnSpan="4" AutoGenerateColumns="False" ColumnWidth="*" ItemsSource="{Binding Person}" IsReadOnly="True" Background="White" Foreground="Black" FontFamily="Arial">
+        <DataGrid x:Name="datagrid" Margin="19,169,19,10" Grid.ColumnSpan="4" AutoGenerateColumns="False" ColumnWidth="*" ItemsSource="{Binding Person}" Background="White" Foreground="Black" FontFamily="Arial" IsSynchronizedWithCurrentItem="True" GridLinesVisibility="Horizontal" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
