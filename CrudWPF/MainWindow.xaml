@@ -5,31 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CrudWPF"
         mc:Ignorable="d"
-        Title="CRUDOperations" Height="400" Width="550" WindowStartupLocation="CenterScreen" Background="#34495E" MinHeight="400" MinWidth="550" >
+        Title="CRUDOperations" Height="500" Width="600" WindowStartupLocation="CenterScreen" Background="#28282B" MinHeight="500" MinWidth="600" >
 
-    <Grid Margin="0,0,10,0">
-
+    <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="118*"/>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="93*"/>
-            <ColumnDefinition Width="59*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Foreground="White" Content="Name" HorizontalAlignment="Left" Margin="34,20,0,0" VerticalAlignment="Top" FontFamily="Arial"/>
-        <Label Foreground="White" Content="Age" HorizontalAlignment="Left" Margin="34,51,0,0" VerticalAlignment="Top" FontFamily="Arial"/>
-        <Label Foreground="White" Content="Gender" HorizontalAlignment="Left" Margin="30,82,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.642,3.502" FontFamily="Arial"/>
-        <Label Foreground="White" Content="ID" HorizontalAlignment="Left" Margin="39,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.642,3.502" FontFamily="Arial"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Insert/Update/Delete" Margin="19,0,0,333" FontFamily="Arial" Foreground="#B59410">
+            <DockPanel>
+                <Grid>
+                    <Label Foreground="#B59410" Content="Name" HorizontalAlignment="Left" Margin="10,7,0,93" Width="49" FontFamily="Arial"/>
+                    <Label Foreground="#B59410" Content="Age" HorizontalAlignment="Left"  Height="28" Width="195" Margin="10,36,0,60" FontFamily="Arial"/>
+                    <Label Foreground="#B59410" Content="Gender" HorizontalAlignment="Left" Margin="7,67,0,0" FontFamily="Arial"/>
+                    <Label Foreground="#B59410" Content="ID" HorizontalAlignment="Left" Margin="12,96,0,0" FontFamily="Arial"/>
+                </Grid>
+            </DockPanel>
+        </GroupBox>
 
 
-        <TextBox x:Name="name_txt"  PreviewTextInput="InputCheck_RegexLetters" HorizontalAlignment="Left" Margin="95,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontWeight="Bold"/>
-        <TextBox x:Name="age_txt"   PreviewTextInput="InputCheck_RegexNumbers" HorizontalAlignment="Left" Margin="95,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.539,3.092"/>
-        <TextBox x:Name="gender_txt" PreviewTextInput="InputCheck_RegexLetters" HorizontalAlignment="Left" Margin="95,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="id_txt" PreviewTextInput="InputCheck_RegexNumbers" HorizontalAlignment="Left" Margin="95,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="search_txt" PreviewTextInput="InputCheck_RegexLetters" HorizontalAlignment="Left" Margin="19,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="search_txt_TextChanged" RenderTransformOrigin="0.453,0.478"/>
+        <TextBox x:Name="name_txt"  PreviewTextInput="InputCheck_RegexLetters" HorizontalAlignment="Left" Margin="95,24,0,0" TextWrapping="Wrap" 
+                 VerticalAlignment="Top" Width="120" FontWeight="Bold" Background="#e0e0e0"/>
 
-        <DataGrid x:Name="datagrid" Margin="19,169,19,10" Grid.ColumnSpan="4" AutoGenerateColumns="False" ColumnWidth="*" ItemsSource="{Binding Person}" Background="White" Foreground="Black" FontFamily="Arial" IsSynchronizedWithCurrentItem="True" GridLinesVisibility="Horizontal" IsReadOnly="True" MouseDoubleClick="datagrid_MouseDoubleClick">
+        <TextBox x:Name="age_txt"   PreviewTextInput="InputCheck_RegexNumbers" HorizontalAlignment="Left" Margin="95,55,0,0" TextWrapping="Wrap" 
+                 VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.539,3.092" FontWeight="Bold" Background="#e0e0e0"/>
+
+        <TextBox x:Name="gender_txt" PreviewTextInput="InputCheck_RegexLetters" HorizontalAlignment="Left" Margin="95,85,0,0" TextWrapping="Wrap" 
+                 VerticalAlignment="Top" Width="120" FontWeight="Bold" Background="#e0e0e0"/>
+
+        <TextBox x:Name="id_txt" PreviewTextInput="InputCheck_RegexNumbers" HorizontalAlignment="Left" Margin="95,115,0,0" TextWrapping="Wrap" 
+                 VerticalAlignment="Top" Width="120" FontWeight="Bold" Background="#e0e0e0"/>
+
+        <GroupBox Margin="19,156,73,273" Header="Name search" Foreground="#B59410" >
+            <TextBox x:Name="search_txt" PreviewTextInput="InputCheck_RegexLetters" HorizontalAlignment="Center" 
+                             TextWrapping="Wrap" VerticalAlignment="Top" Width="132" TextChanged="search_txt_TextChanged" 
+                             RenderTransformOrigin="0.453,0.478" FontWeight="Bold" Background="#e0e0e0" Height="24"/>
+        </GroupBox>
+
+
+        <DataGrid x:Name="datagrid" Margin="19,225,19,10" Grid.ColumnSpan="4" AutoGenerateColumns="False" ColumnWidth="*" 
+                  ItemsSource="{Binding Person}" Background="#e0e0e0" Foreground="Black" FontFamily="Arial" IsSynchronizedWithCurrentItem="True" 
+                  GridLinesVisibility="Horizontal" IsReadOnly="True" MouseDoubleClick="datagrid_MouseDoubleClick">
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
@@ -38,18 +63,19 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Background="White" Content="Insert Record" HorizontalAlignment="Left" Margin="31,44,0,0" VerticalAlignment="Top" Click="InsertButton_Click" Height="40" Width="98" FontFamily="Arial" ClipToBounds="True" RenderTransformOrigin="1.362,-0.281" Grid.Column="2"/>
-        <Button Background="White" Content="Update Record" HorizontalAlignment="Left" Margin="148,44,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="UpdateButton_Click" Height="40" Width="98" FontFamily="Arial" Grid.Column="2" />
-        <Button Background="White" Content="Delete Record" HorizontalAlignment="Left" Margin="31,95,0,0" VerticalAlignment="Top" Click="DeleteButton_Click" Height="40" Width="98" FontFamily="Aria" Grid.Column="2"/>
-        <Button Background="White" Content="Read Records" HorizontalAlignment="Left" Margin="148,95,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.962,0.508" Grid.ColumnSpan="2" Click="ReadButton_Click" Height="40" Width="98" FontFamily="Arial" Grid.Column="2" />
+        <Button Background="#B59410" Content="Insert Record" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" 
+                Click="InsertButton_Click" Height="37" Width="87" FontFamily="Arial" ClipToBounds="True" RenderTransformOrigin="1.362,-0.281" Grid.Column="1"/>
 
+        <Button Background="#B59410" Content="Update Record" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Click="UpdateButton_Click" Height="37" Width="87" FontFamily="Arial" Grid.Column="1" />
 
+        <Button Background="#B59410" Content="Delete Record" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" 
+                Click="DeleteButton_Click" Height="37" Width="87" FontFamily="Aria" Grid.Column="1"/>
 
-
+        <Button Background="#B59410" Content="Read Records" HorizontalAlignment="Left" Margin="245,183,0,0" VerticalAlignment="Top" 
+                RenderTransformOrigin="0.962,0.508" Click="ReadButton_Click" Height="37" Width="87" FontFamily="Arial" 
+                Grid.Column="1" />
 
     </Grid>
-
-
 
 </Window>
 
