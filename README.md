@@ -4,7 +4,9 @@ This application was made for practice purposes for learning WPF(Windows Present
 
 This application works by setting your server, database and being able to use CRUD operation on your data for eg. Used for Person data like in the code.
 
-<img src="https://i.imgur.com/2DKTXBB.png"/>
+<p align="center">
+  <img src="https://i.imgur.com/2DKTXBB.png"/>
+</p>
 
 # Features
 
@@ -14,7 +16,10 @@ This application works by setting your server, database and being able to use CR
 
 - Simple, basic user interface with no clutter.
 
-<img src="https://i.imgur.com/TXl3O14.png"/>
+<p align="center">
+ <img src="https://i.imgur.com/TXl3O14.png"/>
+
+</p>
 
 # Limitations
 
