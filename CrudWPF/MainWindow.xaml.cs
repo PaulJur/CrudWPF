@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using CRUDFunctionsWPF;
 using System.Collections.ObjectModel;
 using System.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace CrudWPF
 {
@@ -37,6 +38,8 @@ namespace CrudWPF
 
             _context = new CRUDContext(_connectionString);
 
+
+
             LoadDatagrid();
 
             search_txt.TextChanged += search_txt_TextChanged;
@@ -50,7 +53,7 @@ namespace CrudWPF
             datagrid.ItemsSource = _context.Person.ToList();
             _datagrid = datagrid;
 
-            
+
 
         }
 
@@ -102,7 +105,7 @@ namespace CrudWPF
             _crudFunctions.Insert(name, age, gender);
             MessageBox.Show("Record inserted successfully!", "Inserted", MessageBoxButton.OK);
             ClearTextBox();
-            
+
 
         }
 
@@ -120,7 +123,7 @@ namespace CrudWPF
 
             int age;
             int id;
-            
+
 
 
             // Check if age text is not empty and can be parsed to integer
@@ -201,7 +204,7 @@ namespace CrudWPF
             if (datagrid.SelectedItem is Person selectedPerson)
             {
                 id_txt.Text = selectedPerson.Id.ToString();
-                name_txt.Text= selectedPerson.Name.ToString();
+                name_txt.Text = selectedPerson.Name.ToString();
                 gender_txt.Text = selectedPerson.Gender.ToString();
                 age_txt.Text = selectedPerson.Age.ToString();
             }
